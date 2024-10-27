@@ -73,14 +73,32 @@ We notice that the loss is still decreasing from the loss curve. Hence it is a g
 
 In our final run we increase the number of epochs to 15, use flip and mixup augmentations, scale the image size back to 640x640 and run. Ideally we would like to run for more epochs, until the curve plateaus, but due to time constraints we stop at 15.
 
-                    Class     Images  Instances      Box(P          R      mAP50  mAP50-95
+## Results
+
+                    Class     Images  Instances      P          R      mAP50  mAP50-95
                    all        301        302      0.772      0.766      0.815      0.485
                      0        163        163      0.731      0.632       0.71      0.391
                      1        138        139      0.813      0.899      0.919       0.58
 
-We get reasonable resuls, with an mAP of 0.919 at a threshold of 0.5 as well as reasonable precision and recall, both above 0.75
 
-We still see a couple of false positives and negatives, some of which will go away with more training.
+
+We get reasonable results, with an mAP of 0.919 at a threshold of 0.5 as well as reasonable precision and recall, both above 0.75
+
+### Precision Recall Curve
+
+<img src="https://github.com/user-attachments/assets/e311df76-72ac-4a57-8c33-1b6bc0e30d2e" width="600">
+
+
+### True Labels
+<img src="https://github.com/user-attachments/assets/24208708-07f1-4fbe-bd5f-df563aa49712" width="600">
+
+### Predicted Labels with confidence
+<img src="https://github.com/user-attachments/assets/18836623-58b9-4125-addc-78df9fe2db6c" width="600">
+
+
+
+
+We still see a couple of wrong detections. From this random batch, false negatives seem to be a big problem, although a good amount of this will go away with more training.
 
 I also tried to use TIDE toolbox(https://dbolya.github.io/tide/paper.pdf) to look a little deeper at the types of errors our model makes but was unable to debug it and get it working within time constraints. The code is attached.
 
