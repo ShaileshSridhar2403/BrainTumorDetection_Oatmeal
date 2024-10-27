@@ -135,4 +135,5 @@ Claude 3.5 Sonnet - for base and boilerplate code generation
 ## Setup:
 * IDE: Cursor, with Claude 3.5 Sonnet
 * Macbook M1 Pro, 32GB RAM, No GPU
-* Google Colab, T4 GPU
+* Google Colab, T4 GPU, A100 GPU
+
