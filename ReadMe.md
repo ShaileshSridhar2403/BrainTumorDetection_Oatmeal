@@ -1,3 +1,6 @@
+# Brain Tumor Detection for Oatmeal Take Home
+
+Here are my process, notes and results
 
 # Process and Notes:
 
@@ -68,7 +71,11 @@ We perform ablations with several different augmentations:
 Interestingly, in our example we do not see immediate results with these augmentation strategies, but this is as expected. Augmentation improves generalization in the long run, affecting convergence rather than performance with a smaller number of epochs and hence we choose to keep it.
 
 We notice that the loss is still decreasing from the loss curve. Hence it is a good idea to train for more epochs.
-![image](https://github.com/user-attachments/assets/25eb16f7-a311-4a7c-8bb8-1f42f0961106)
+
+<img src="https://github.com/user-attachments/assets/25eb16f7-a311-4a7c-8bb8-1f42f0961106" width="500">
+
+
+
 
 
 In our final run we increase the number of epochs to 15, use flip and mixup augmentations, scale the image size back to 640x640 and run. Ideally we would like to run for more epochs, until the curve plateaus, but due to time constraints we stop at 15.
@@ -88,6 +95,7 @@ We get reasonable results, with an mAP of 0.919 at a threshold of 0.5 as well as
 
 <img src="https://github.com/user-attachments/assets/e311df76-72ac-4a57-8c33-1b6bc0e30d2e" width="600">
 
+We see that there is no significant difference between precision and recall. We do see a difference between the two types of tumors however
 
 ### True Labels
 <img src="https://github.com/user-attachments/assets/24208708-07f1-4fbe-bd5f-df563aa49712" width="600">
@@ -98,7 +106,7 @@ We get reasonable results, with an mAP of 0.919 at a threshold of 0.5 as well as
 
 
 
-We still see a couple of wrong detections. From this random batch, false negatives seem to be a big problem, although a good amount of this will go away with more training.
+We see a several wrong incorrect predictions. From this random batch, false negatives seem to be a big problem, although a good amount of this will go away with more training. 
 
 I also tried to use TIDE toolbox(https://dbolya.github.io/tide/paper.pdf) to look a little deeper at the types of errors our model makes but was unable to debug it and get it working within time constraints. The code is attached.
 
