@@ -1,6 +1,10 @@
 # Brain Tumor Detection for Oatmeal Take Home
 
-Here are my process, notes and results
+Here are my process, notes and results.
+
+You can find best model weights in the models directory
+
+A training notebook  which can be run without modifications is included (Brain_Tumor_Detection_Oatmeal.ipynb)
 
 # Process and Notes:
 
