@@ -1,5 +1,7 @@
 from dataset_preparation import create_yolov8_dataset
 from ultralytics import YOLO
+import os
+from tide_analysis import analyze_model_predictions
 
 
 if __name__ == '__main__':
@@ -14,7 +16,7 @@ if __name__ == '__main__':
     # Train the model
     results = model.train(
         data=dataset_yaml,
-        imgsz=640,
+        imgsz=224,
         epochs=3,
         batch=64,
         patience=1,
@@ -25,11 +27,26 @@ if __name__ == '__main__':
         optimizer='auto',  # or 'SGD', 'Adam', etc.
         verbose=True,
         seed=42,
-        deterministic=True
+        deterministic=True,
+        # Add augmentation parameters
+        flipud=0.5,    # vertical flip with 50% probability
+        fliplr=0.5,    # horizontal flip with 50% probability
+        mixup=0.1
     )
 
     # Validate the model
-    # metrics = model.val()
+    metrics = model.val()
 
-    # # Save the model
-    # model.save('best_model.pt')
+    # Save the model
+    model.save('best_model.pt')
+
+    # Run TIDE analysis
+    val_data = os.path.join(output_dir, 'val')
+    analyze_model_predictions(
+        model=model,
+        val_data=val_data,
+        coco_file=coco_file,
+        output_dir='brain_tumor_detection',
+        conf_threshold=0.25,
+        imgsz=224
+    )
