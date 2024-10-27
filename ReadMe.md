@@ -65,24 +65,26 @@ We perform ablations with several different augmentations:
 * Vertical and horizontal flips - This task seems agnostic to the vertical or horizontal orientation so this will help introducde more data
 * Mixup - This will also help the model generalize better
 
-We notice that both augmentation seem to help.
+Interestingly, in our example we do not see immediate results with these augmentation strategies, but this is as expected. Augmentation improves generalization in the long run, affecting convergence rather than performance with a smaller number of epochs and hence we choose to keep it.
 
-We also notice that the loss is still decreasing from the loss curve. Hence it is a good idea to train for more epochs.
+We notice that the loss is still decreasing from the loss curve. Hence it is a good idea to train for more epochs.
+![image](https://github.com/user-attachments/assets/25eb16f7-a311-4a7c-8bb8-1f42f0961106)
+
 
 In our final run we increase the number of epochs to 15, use flip and mixup augmentations, scale the image size back to 640x640 and run. Ideally we would like to run for more epochs, until the curve plateaus, but due to time constraints we stop at 15.
 
-                     Class     Images  Instances      P          R      mAP50  mAP50-95
-                    all        301        302      0.809      0.785      0.839      0.495
-                     0        163        163      0.741      0.656      0.732      0.396
-                     1        138        139      0.876      0.913      0.947      0.594
+                    Class     Images  Instances      Box(P          R      mAP50  mAP50-95
+                   all        301        302      0.772      0.766      0.815      0.485
+                     0        163        163      0.731      0.632       0.71      0.391
+                     1        138        139      0.813      0.899      0.919       0.58
 
-We get reasonable resuls, with an mAP of 0.947 at a threshold of 0.5 as well as reasonable precision and recall, both above 0.75
+We get reasonable resuls, with an mAP of 0.919 at a threshold of 0.5 as well as reasonable precision and recall, both above 0.75
 
 We still see a couple of false positives and negatives, some of which will go away with more training.
 
 I also tried to use TIDE toolbox(https://dbolya.github.io/tide/paper.pdf) to look a little deeper at the types of errors our model makes but was unable to debug it and get it working within time constraints. The code is attached.
 
-Taking these further steps, as well as addressingthe slight disparity between the two classes, we can see that we can further improve the model
+Taking these further steps, as well as addressing the slight disparity between the two classes, we can see that we can further improve the model
     
 
 
