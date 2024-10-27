@@ -1,0 +1,8 @@
+path: /Users/shaileshsridhar/Documents/Projects/BrainTumorDetectionOatmeal/BrainTumorDetection_Oatmeal/yolo_dataset
+train: images/train
+val: images/val
+nc: 3
+names:
+- Tumor
+- '0'
+- '1'
