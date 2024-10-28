@@ -65,7 +65,7 @@ In order to improve the model there are several things we could do:
 4. Analyze the metrics and see where we can improve (With metrics such as TIDE)
 
 
-1. is the easiest to do.
+Optiom 1. is the easiest to do.
 
 We perform ablations with several different augmentations:
 
