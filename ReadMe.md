@@ -29,7 +29,7 @@ It looks like there are 2 categories/classes:
 
 For now we will treat these as two separate classes in the interest of time as later we can easily convert back to one class if necessary in the application layer but it is better to understand their significance
 
-We visualize the dateset and we verify that the data and bounding boxes seem fine. (It is however noteworthy that the bounding boxes are not very tight and there is a lot of space between the tumor and the edge of the bounding box, so if given more time we might want to take this into account)
+We visualize the dataset and we verify that the data and bounding boxes seem fine. (It is however noteworthy that the bounding boxes are not very tight and there is a lot of space between the tumor and the edge of the bounding box, so if given more time we might want to take this into account)
 
 We also verify the conversion to YOLO format. 
 
@@ -60,16 +60,16 @@ After validating, and looking at the result, our results are reasonable. We are 
 In order to improve the model there are several things we could do:
 
 1. Data Augmentation
-2. Better Hyperparameters Tuning
+2. Better Hyperparameter Tuning
 3. Simply train for more epochs
 4. Analyze the metrics and see where we can improve (With metrics such as TIDE)
 
 
-Optiom 1. is the easiest to do.
+Option 1. is the easiest to do.
 
 We perform ablations with several different augmentations:
 
-* Vertical and horizontal flips - This task seems agnostic to the vertical or horizontal orientation so this will help introducde more data
+* Vertical and horizontal flips - This task seems agnostic to the vertical or horizontal orientation so this will help introduce more data
 * Mixup - This will also help the model generalize better
 
 Interestingly, in our example we do not see immediate results with these augmentation strategies, but this is as expected. Augmentation improves generalization in the long run, affecting convergence rather than performance with a smaller number of epochs and hence we choose to keep it.
@@ -110,7 +110,7 @@ We see that there is no significant difference between precision and recall. We 
 
 
 
-We see a several wrong incorrect predictions. From this random batch, false negatives seem to be a big problem, although a good amount of this will go away with more training. 
+We see several incorrect predictions. From this random batch, false negatives seem to be a big problem, although a good amount of this will go away with more training. 
 
 I also tried to use TIDE toolbox(https://dbolya.github.io/tide/paper.pdf) to look a little deeper at the types of errors our model makes but was unable to debug it and get it working within time constraints. The code is attached.
 
